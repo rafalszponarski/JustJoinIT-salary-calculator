@@ -85,19 +85,9 @@ get_employment()
 
 # Prepare url
 url = f"https://justjoin.it/"
-if prof:
-    url += f'all/{prof}'
-
-if exp and not prof:
-    url += f'all/all/{exp}'
-elif exp:
-    url += f'/{exp}'
-
-if emp:
-    url += f'?employmentType={emp}&tab=with-salary'
-else:
-    url += '?tab=with-salary'
-
+url += f'all/{prof}' if prof else ''
+url += f'all/all/{exp}' if exp and not prof else (f'/{exp}' if exp else '')
+url += f'?employmentType={emp}&tab=with-salary' if emp else '?tab=with-salary'
 
 # Prepare bowser
 options = Options()
