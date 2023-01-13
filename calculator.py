@@ -115,5 +115,5 @@ for offer in offers:
 
 print(f"Result for {exp} {prof} on {emp} employment type\n")
 print(f"Average salary: {round(sum(offer_min)/len(offer_min))} - {round(sum(offer_max)/len(offer_max))} {currency}")
-print(f"Smallest salary: {min(offer_min)} {currency}")
-print(f"Biggest salary: {max(offer_max)} {currency}")
+print(f"Smallest salary: {round(min(offer_min))} {currency}")
+print(f"Biggest salary: {round(max(offer_max))} {currency}")
