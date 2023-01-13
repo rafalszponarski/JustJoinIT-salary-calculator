@@ -12,7 +12,7 @@ Download the latest version of chromedriver from https://chromedriver.chromium.o
 Make sure to download the version that matches the version of Chrome you have installed.
 
 You need chromium browser to run the program: 
-- For windows, I recommend: https://github.com/Hibbiki/chromium-win64
+- For windows, I recommend: https://github.com/Hibbiki/chromium-win64 | `winget install Hibbiki.Chromium`
 
 - For linux packet should be in sources, e.g. `sudo apt install -y chromium-browser`
 
