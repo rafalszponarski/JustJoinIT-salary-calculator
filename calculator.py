@@ -108,12 +108,15 @@ driver.close()
 # Get smallest, biggest and average salary
 offer_min = []
 offer_max = []
-for offer in offers:
-    o = offer.replace('k ', '').replace(f'{currency}', '').split('-')
-    offer_min.append(float(o[0])*1000)
-    offer_max.append(float(o[1])*1000)
+offer_avg = []
+for o in offers:
+    offer = o.replace('k ', '').replace(f'{currency}', '').split('-')
+    offer_min.append(float(offer[0])*1000)
+    offer_max.append(float(offer[1])*1000)
+    offer_avg.append((float(offer[0]) + float(offer[1])) / 2 * 1000)
 
-print(f"Result for {exp} {prof} on {emp} employment type\n")
-print(f"Average salary: {round(sum(offer_min)/len(offer_min))} - {round(sum(offer_max)/len(offer_max))} {currency}")
+print(f"Result for {exp} {prof} on {emp} employment type:\n")
+print(f"Average salary brackets: {round(sum(offer_min)/len(offer_min))} - {round(sum(offer_max)/len(offer_max))} {currency}")
+print(f"Average salary: {round(sum(offer_avg)/len(offer_avg))} {currency}")
 print(f"Smallest salary: {round(min(offer_min))} {currency}")
 print(f"Biggest salary: {round(max(offer_max))} {currency}")
