@@ -24,31 +24,28 @@ def get_profession():
     global prof
     while prof not in professions:
         user = input("Type key word of your profession: ")
-        if user == '!all':
-            print(', '.join(professions))
 
-        else:
-            guess = [x.title() for x in professions if match(f'.*({user}).*', x, flags=IGNORECASE)]
+        guess = [p for p in professions if match(f'.*({user}).*', p, flags=IGNORECASE)]
 
-            if len(guess) == 0:
-                print("Nothing found! Please try again or type '!all' to display all available professions")
+        if len(guess) == 0:
+            print("Nothing found! Please try again or press enter to display all available professions")
 
-            elif len(guess) == 1:
-                if input(f"Do you mean {guess[0]}? y/n: ") == 'y':
-                    prof = guess[0]
-                    break
+        elif len(guess) == 1:
+            if input(f"Do you mean {guess[0].title()}? y/n: ").lower() in ['y', 'yes']:
+                prof = guess[0]
+                break
 
-            elif len(guess) > 1:
-                print('\n'.join(list(map(lambda x: f'{guess.index(x)+1}: {x}', guess))))
-                i = int(input("\nIf You mean one of them, type it ID here, or any other number to try again: "))
+        elif len(guess) > 1:
+            print('\n'.join(list(map(lambda x: f'{guess.index(x)+1}: {x.title()}', guess))))
+            i = input("\nIf You mean one of them, type it ID here, or anything else to try again: ")
 
-                if i in range(1, len(guess)+1):
-                    prof = guess[i-1]
-                    print(f"\nYour role is: {prof}")
-                    break
+            if i in list(map(str, range(1, len(guess)+1))):
+                prof = guess[int(i)-1]
+                print(f"\nYour role is: {prof}")
+                break
 
-                else:
-                    print("Wrong ID!")
+            else:
+                print("Wrong ID!")
 
 
 def get_experience():
